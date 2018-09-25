@@ -38,7 +38,7 @@ As representações geradas do vetor de featuares concatenado, após aplicadas n
 
 # Matriz de Similaridade
 
-Foi gerado uma matrix de similaridade entre os vetores de características (vetor final gerado a partir do AutoEncoder) utilizando o método da "Distância Euclideana". Para os resultados apresentados nesse documento foi utilizado uma "Distância Euclideana Invertida Não Normalizada", ou seja, valores muito proxímos de zero (ou zero) corresponde a vetores que não possuem similaridade nenhum, em contrapartida quanto maior for o valor maior é a similaridade entre os itens.
+Foi gerado uma matrix de similaridade entre os vetores de características (vetor final gerado a partir do AutoEncoder) utilizando o método da "Distância Euclideana". Para os resultados apresentados nesse documento foi utilizado uma "Distância Euclideana Invertida e Normalizada", ou seja, valores muito proxímos de zero (ou zero) corresponde a vetores que não possuem similaridade nenhum, em contrapartida valores próximos ou igual a 1 corresponde a itens muito similares  ou identicos (o mesmo vetor).
 
 Obs: O maior valor encontrado na matriz de similaridade corresponde a similaridade do vetor com ele mesmo.
 
@@ -56,28 +56,18 @@ Nós Gráficos construidos atráves das matrizes geradas pelo o AutoEncoder "CAE
 
 Para a métrica "Recall" quanto maior o valor de @k melhor o resultado.
 
-Para métrica NDCG, os valores de @k entre 10 e 50 tem resultados similares, no entanto, para um @k de 100 o desempenho do algoritmo aumenta consideravelmente. Na métrica de avaliação MAP o algoritmo tem um comportamento contrário ao Recall, quanto maior o valor de @k pior foi seu desempenho.
+Para métrica NDCG, os valores de @k entre 10 e 50 tem resultados similares, no entanto, para um @k de 100 o desempenho do algoritmo aumenta. Na métrica de avaliação MAP o algoritmo tem um comportamento contrário ao Recall, quanto maior o valor de @k pior foi seu desempenho.
 
+Comparado a outras duas abordagens (Sparse e VAE) as matrizes provenientes do AutoEncoder CAE mostraram ser as mais promissoras.
 
 Em todas as Comparações o BaseLine (CoFactor) utilizado apresentou melhor resultado do que as representações propostas do vetor original.
 
-## Sparse
-Nós Gráficos construidos atráves das matrizes geradas pelo o AutoEncoder "Sparse" o comportamento quanto a variação do @k para as métricas utilizadas é o mesmo observado no AutoEncoder "CAE", há uma crescente no desempenho para metrica Recall, NDCG mantém valores similares somente tendo uma crescente para @k igual a 100 e a métrica MAP mostrando uma decrescimento de desempenho do algoritmo conforme o valor de @k cresce.
+## Sparse and VAE
+Nós Gráficos construidos atráves das matrizes geradas pelos os AutoEncoder's "Sparse e VAE" o comportamento quanto a variação do @k para as métricas utilizadas é o mesmo observado no AutoEncoder "CAE", há uma crescente no desempenho para métrica Recall, NDCG mantém valores similares somente tendo uma crescente para @k igual a 100 e a métrica MAP mostrando uma decrescimento de desempenho do algoritmo conforme o valor de @k cresce.
 
-O que chama atenção aqui é o fato de que independente da representação utilizada (10%,20%,...,100%) os valores resultantes são muito similares e na maioria das vezes iguais. Acredito que esse fato esteja diretamente ligado a sparsidade das matrizes, que para o autoencoder "sparse" a distância euclideana invertida resultou em matrizes muito densas (sparsidade de 0%).
-
+O que chama atenção aqui é o fato de que independente da representação utilizada (10%,20%,...,100%) os valores resultantes são muito similares e na maioria das vezes iguais. Acredito que esse fato esteja diretamente ligado a sparsidade das matrizes, que para os autoencoder's "Sparse e VAE" a distância euclideana invertida normalizada resultou em matrizes muito densas.
 
 Em todas as Comparações o BaseLine (CoFactor) utilizado apresentou melhor resultado do que as represntações propostas do vetor original.
-
-## VAE
-Nós Gráficos construidos atráves das matrizes geradas pelo o AutoEncoder "VAE" o comportamento quanto a variação do @k para as métricas utilizadas é o mesmo observado no AutoEncoder "CAE", há uma crescente no desempenho para metrica Recall, NDCG mantém valores similares somente tendo uma crescente para @k igual a 100 e a métrica MAP mostrando uma decrescimento de desempenho do algoritmo conforme o valor de @k cresce.
-
-No geral os resultados obtidos pelo algoritmo quando utilizado as matrizes de representação geradas pelo AutoEncoder VAE foi pior do que os resultados encontrados por "CAE e Sparse".
-
-Aqui também chama bastante atenção o fato de que as representações de matrizes com menor percentual (10%, 20% e 30%) tiveram resultados muito ruins comparadas com os resultados das outras representações. O algoritmo convergiu rapidamente durante o treinamento para as matrizes de pequenas representações o que demostrou que ele foi muito bem no treino, entretanto, nos testes seu desempenho deixou muito a desejar.
-
-
-Em todas as Comparações o BaseLine (CoFactor) utilizado apresentou melhor resultado do que as representações propostas do vetor original.
 
 # Organização dos Arquivos
 Foram criados 3 arquivos notebook, no qual, cada um deles contém um conjunto de gráficos comparando os resultados do BaseLine com as represetaçoes dos AutoEncoder's (sparse, vae, cae) aplicados sobre cada vetor gerado pelas redes neuras (ResNet50, Vgg16, Vgg19 e Xception).
