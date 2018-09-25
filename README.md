@@ -1,5 +1,5 @@
 # CofactorVSAutoEncoders_DEI_normalizada
-Resultados comparativos do CoFactor Vs AutoEncoder's com matrizes utilizando Distância Euclideana Invertida  e Normalizada (0 ~ 1)
+Resultados comparativos do CoFactor Vs AutoEncoder's com matrizes utilizando Distância Euclideana Invertida (DEI)  e Normalizada (0 ~ 1)
 
 # Definição dos Dados - Descritivo
 Os valores apresentados nos gráficos, correspondem aos resultados obtidos do Algoritmo CoFactor. A Barra amarela correponde a entrada padrão dos dados, no qual o algoritmo trabalha com a co-ocorrência de itens. As demais barras correpondem a entrada gerada atráves do procedimento a descrito abaixo.
